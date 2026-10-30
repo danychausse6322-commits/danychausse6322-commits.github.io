@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dany Chausse — Technical Writer &amp; AI Agent Developer</title>
-<meta name="description" content="Dany Chausse is a technical writer and AI agent developer. Tested tutorials on local LLMs, tool-calling and DevTools — every piece ships with its code, its terminal output and a test that proves the claim.">
+<title>Dany Chausse — AI Automation &amp; Technical Writing</title>
+<meta name="description" content="Dany Chausse builds AI automation — cold-outreach engines, video pipelines, local agent stacks — and writes the technical documentation that makes them usable. Every claim here ships with its code, its logs and a test that proves it.">
 <meta name="author" content="Dany Chausse">
 <link rel="canonical" href="https://danychausse6322-commits.github.io/">
 
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Dany Chausse — Technical Writer &amp; AI Agent Developer">
-<meta property="og:description" content="Tested tutorials on local LLMs, tool-calling and DevTools. Freelance technical writing for developer tool companies.">
+<meta property="og:title" content="Dany Chausse — AI Automation &amp; Technical Writing">
+<meta property="og:description" content="AI automation builds and the technical writing that documents them: cold-outreach engines, video pipelines, local agent stacks.">
 <meta property="og:url" content="https://danychausse6322-commits.github.io/">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -86,6 +86,10 @@
     border-bottom:1px solid var(--rule);
   }
   .brand{
+    display:inline-block;
+    /* vertical padding only widens the hit area: the line box, and so the
+       baseline alignment with the nav, does not move */
+    padding:10px 0;
     font-family:var(--mono);
     font-size:12.5px;
     font-weight:600;
@@ -108,7 +112,7 @@
     letter-spacing:.04em;
     color:var(--muted);
     border-bottom:1px solid transparent;
-    padding:6px 0;
+    padding:11px 0;
   }
   .topnav a:hover{color:var(--accent);border-bottom-color:rgba(47,74,109,.35)}
 
@@ -204,7 +208,26 @@
   }
   .sec-label span{color:var(--ink)}
 
-  /* ---------- portfolio ---------- */
+  /* ---------- proof ---------- */
+  /* Group header: same mono voice as .sec-label, quieter, with a rule that
+     closes the line so the two halves of the section read as one list. */
+  /* Group header outranks the .kind kicker below it: ink weight and a solid
+     rule, so the two mono lines never read as the same level. */
+  .group{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:0 0 14px;
+    font-family:var(--mono);
+    font-size:11.5px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ink);
+  }
+  .group::after{content:"";flex:1 1 auto;height:1px;background:var(--rule)}
+  .work + .group{margin-top:40px}
+
   .work{list-style:none;margin:0;padding:0}
   .work li{
     padding:30px 0;
@@ -249,6 +272,18 @@
     font-size:16px;
     line-height:1.6;
     max-width:60ch;
+  }
+
+  /* The checkable numbers under a build item: same mono face as the labels,
+     so it reads as a spec line rather than another paragraph. */
+  .spec{
+    margin:12px 0 0;
+    font-family:var(--mono);
+    font-size:11.5px;
+    line-height:1.7;
+    letter-spacing:.03em;
+    color:var(--muted);
+    max-width:62ch;
   }
 
   /* ---------- about ---------- */
@@ -402,7 +437,7 @@
   <div class="topbar">
     <a class="brand" href="#top">Dany Chausse</a>
     <nav class="topnav" aria-label="Primary">
-      <a href="#portfolio">Portfolio</a>
+      <a href="#portfolio">Proof</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -416,20 +451,49 @@
     <p class="eyebrow"><span class="dot" aria-hidden="true"></span>Available for freelance &amp; contract work</p>
 
     <h1>Dany Chausse</h1>
-    <p class="role">Technical Writer &amp; AI Agent Developer</p>
+    <p class="role">AI Automation &amp; Technical Writing</p>
 
-    <p class="lede">I write the documentation that <strong>survives contact with a real machine</strong> &mdash; tested tutorials on local LLMs, tool-calling, and the developer tooling around them.</p>
-    <p class="lede">Every piece I publish ships with the code it describes, the terminal output it actually captured, and a test that fails if the claim stops being true.</p>
+    <p class="lede">I build <strong>AI automation</strong> &mdash; cold-outreach engines, video pipelines, local agent stacks &mdash; and write the documentation that survives contact with the machine.</p>
+    <p class="lede">Every piece I ship comes with the code it describes, the log line it actually wrote, and a test that fails if the claim stops being true.</p>
 
     <div class="actions">
       <a class="btn btn-primary" href="mailto:danychausse6322@gmail.com?subject=Freelance%20writing%20enquiry">Email me about a project</a>
-      <a class="btn btn-secondary" href="#portfolio">Read the work</a>
+      <a class="btn btn-secondary" href="#portfolio">See the proof</a>
     </div>
   </div>
 
-  <!-- ================= PORTFOLIO ================= -->
+  <!-- ================= PROOF ================= -->
   <section id="portfolio">
-    <p class="sec-label"><span>Portfolio</span> &mdash; selected published work</p>
+    <p class="sec-label"><span>Proof</span> &mdash; systems built, then written up</p>
+
+    <p class="group">Built &amp; verified</p>
+
+    <ol class="work">
+
+      <li>
+        <span class="kind">AI automation &middot; Python &middot; SMTP &amp; IMAP</span>
+        <h2>A cold-outreach engine that proves each email actually left</h2>
+        <p class="desc">The sender behind the agency&rsquo;s own outbound. A pre-flight duplicate gate checks the SQLite log before anything is queued, every SMTP stage is recorded, and the stored Message-ID is read back out of the database after each send &mdash; so &ldquo;sent&rdquo; is a record, not a print statement. Attachments are hashed before the MIME part is built, the warm-up cap is enforced in code, and a matching IMAP watcher files each reply against the lead that earned it.</p>
+        <p class="spec">Python &middot; 683 lines &middot; SQLite send log &middot; dry-run against a local SMTP sink before a real inbox</p>
+      </li>
+
+      <li>
+        <span class="kind">AI automation &middot; Python &middot; yt-dlp &amp; ffmpeg</span>
+        <h2>One long video in, three captioned vertical clips out</h2>
+        <p class="desc">A clipper built for the short-form side of the business: hand it a YouTube URL and it returns 9:16 clips with captions burned on the frame &mdash; yt-dlp fetches, faster-whisper transcribes on CPU, ffmpeg cuts, reframes and burns the cues. Proved on two public sources, a 13-minute and a 10-minute 1080p video, three clips each in 125.6 s and 117.9 s of wall-clock. Both known defects &mdash; a caption baseline that collides with baked-in lower thirds, and a centre crop that loses the edges of screen recordings &mdash; are written down next to the code rather than left for a client to discover.</p>
+        <p class="spec">Python &middot; 627 lines &middot; 1080&times;1920 at 30 fps &middot; audio and burned-in captions verified on the exported files</p>
+      </li>
+
+      <li>
+        <span class="kind">AI agent stack &middot; local models</span>
+        <h2>A guard that sits between the model and the machine</h2>
+        <p class="desc">Tool-calling is where a small local model does the most damage: it calls something that does not exist, or returns an empty result that reads exactly like &ldquo;nothing found&rdquo;. The guard validates every call against a JSON schema before it executes, keeps a failed tool distinguishable from an empty one, and ships with the terminal output each port actually produced &mdash; Node and Python, run against a local Qwen and DeepSeek bench.</p>
+        <p class="spec">Node.js &amp; Python &middot; JSON-schema validation &middot; run transcripts kept with the code</p>
+      </li>
+
+    </ol>
+
+    <p class="group">Published technical writing</p>
 
     <ol class="work">
 
@@ -471,19 +535,17 @@
 
   <!-- ================= ABOUT ================= -->
   <section id="about">
-    <p class="sec-label"><span>About</span> &mdash; local models &amp; DevTools</p>
+    <p class="sec-label"><span>About</span> &mdash; AI automation &amp; technical writing</p>
 
     <div class="about">
-      <p>I build with <strong>local AI models</strong> &mdash; Qwen, DeepSeek and small quantised models running on ordinary hardware &mdash; and I write about what they do when nobody is watching. Most of my work starts from a failure I hit myself: a tool call that returns an empty result when it should have raised, a model that reports success without performing the action, a workflow that quietly costs more than the hosted alternative it replaced.</p>
+      <p>I build <strong>AI automation</strong> and write the technical documentation that keeps it usable. Most of my work is one of three things: an automation that takes over a manual routine, a lead-generation engine that finds and verifies its own prospects, or the documentation a new operator can follow without calling me.</p>
 
-      <p>I write for the developer who has to run it: complete code, real terminal output, honest failure modes, and no step skipped because it looked obvious to the author. My work starts from failures I hit myself, because a system that reports 'all clear' is not the same as a system that is working.</p>
-
-      <p>The result is writing aimed at the <strong>developer who has to run it</strong>: complete code, real terminal output, honest failure modes, and no step skipped because it looked obvious to the author.</p>
+      <p>Every engagement ends with a <strong>measurable result</strong> &mdash; hours returned per week, outreach volume a log can prove, or a run that either passes its check or fails loudly. I write down what the system actually does, including the parts that did not work the first time.</p>
 
       <ul class="stack">
         <li>
           <span class="k">Writes about</span>
-          <p class="v">LLM tool-calling, local inference, agent harnesses, DevTools workflows</p>
+          <p class="v">AI automation, LLM tool-calling, local inference, developer documentation</p>
         </li>
         <li>
           <span class="k">Builds with</span>
@@ -495,7 +557,7 @@
         </li>
         <li>
           <span class="k">Available for</span>
-          <p class="v">Tutorials, docs rewrites, case studies, developer blog programmes</p>
+          <p class="v">Automation builds, lead-generation engines, technical documentation</p>
         </li>
       </ul>
     </div>
@@ -505,7 +567,7 @@
   <section id="contact" class="contact">
     <p class="sec-label"><span>Contact</span> &mdash; start a project</p>
 
-    <p>If you need a tutorial programme, a docs rewrite, or a case study that holds up under a reader trying to run the code &mdash; I take on freelance and contract work, and I&rsquo;m glad to start with a short paid trial piece.</p>
+    <p>If you need an automation built, a tutorial programme, a docs rewrite, or a case study that holds up under a reader trying to run the code &mdash; I take on freelance and contract work, and I&rsquo;m glad to start with a short paid trial piece.</p>
 
     <div class="contact-links">
       <a class="contact-link" href="mailto:danychausse6322@gmail.com?subject=Freelance%20writing%20enquiry">
@@ -522,8 +584,8 @@
 </main>
 
 <footer class="wrap">
-  <span>Dany Chausse &middot; Technical Writer &amp; AI Agent Developer</span>
-  <span class="last">Last updated 28 October 2026</span>
+  <span>Dany Chausse &middot; AI Automation &amp; Technical Writing</span>
+  <span class="last">Last updated 30 October 2026</span>
 </footer>
 
 <script type="application/ld+json">
@@ -531,11 +593,11 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Dany Chausse",
-  "jobTitle": "Technical Writer & AI Agent Developer",
+  "jobTitle": "AI Automation & Technical Writing",
   "email": "mailto:danychausse6322@gmail.com",
   "url": "https://danychausse6322-commits.github.io/",
   "sameAs": ["https://www.linkedin.com/in/dany-chausse-0301462a0/"],
-  "knowsAbout": ["Technical writing", "Large language models", "Local inference", "LLM tool calling", "Node.js", "Python", "Developer tooling"]
+  "knowsAbout": ["AI automation", "Workflow automation", "Technical writing", "Developer documentation", "Large language models", "Local inference", "LLM tool calling", "Node.js", "Python"]
 }
 </script>
 
